@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎂 Feliz Cumpleaños Marlen</title>
+
+<link rel="icon" href="icon.jpg">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#05000d;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* FONDO */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 15% 20%, #ff149355, transparent 30%),
+        radial-gradient(circle at 85% 25%, #00eaff44, transparent 30%),
+        radial-gradient(circle at 50% 80%, #8a2be244, transparent 35%);
+    z-index:-2;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+/* PORTADA */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+
+.hero-content{
+    max-width:900px;
+    animation:entrada 1.5s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.small{
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#00ffff;
+    font-size:14px;
+}
+
+h1{
+    margin-top:20px;
+    font-size:clamp(55px,10vw,110px);
+    line-height:.9;
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff1493,
+            #ffffff,
+            #00ffff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    text-shadow:
+        0 0 30px #ff149355,
+        0 0 50px #00ffff33;
+}
+
+.nombre{
+    margin-top:30px;
+    font-size:clamp(35px,7vw,70px);
+    font-weight:bold;
+}
+
+.nombre span{
+    color:#ff69b4;
+    text-shadow:
+        0 0 15px #ff1493,
+        0 0 40px #ff1493;
+}
+
+.hero p{
+    margin-top:25px;
+    color:#ddd;
+    font-size:19px;
+}
+
+/* BOTÓN */
+.btn{
+    margin-top:35px;
+    padding:17px 38px;
+    border:none;
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff1493,
+            #8a2be2,
+            #00ffff
+        );
+
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 20px #ff149366,
+        0 0 40px #00ffff33;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 30px #ff1493,
+        0 0 60px #00ffff;
+}
+
+/* SECCIONES */
+.seccion{
+    min-height:100vh;
+    padding:100px 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CARTA */
+.carta{
+    width:min(760px,95%);
+    padding:50px;
+
+    border-radius:30px;
+
+    background:#ffffff0c;
+    border:1px solid #ffffff22;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 30px 100px #000;
+
+    text-align:center;
+}
+
+.carta h2{
+    font-size:clamp(35px,6vw,50px);
+    margin-bottom:30px;
+}
+
+.carta h2 span{
+    color:#ff69b4;
+}
+
+.carta p{
+    font-size:19px;
+    line-height:1.9;
+    color:#ddd;
+}
+
+.carta strong{
+    color:#ff69b4;
+    font-size:23px;
+}
+
+/* TARJETAS */
+.cards{
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+
+    max-width:1050px;
+
+    margin:50px auto;
+}
+
+.card{
+    padding:35px 25px;
+
+    background:#ffffff0c;
+
+    border:1px solid #ffffff18;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:
+        translateY(-12px)
+        scale(1.03);
+
+    border-color:#ff69b4;
+
+    box-shadow:
+        0 15px 40px #ff149333;
+}
+
+.card .emoji{
+    font-size:55px;
+}
+
+.card h3{
+    margin:20px 0 10px;
+    font-size:23px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+/* PASTEL */
+.pastel{
+    margin:80px auto 40px;
+
+    width:220px;
+
+    position:relative;
+}
+
+.piso{
+    width:260px;
+    height:20px;
+
+    background:#ddd;
+
+    border-radius:50%;
+
+    margin-left:-20px;
+
+    box-shadow:
+        0 10px 30px #000;
+}
+
+.pastel-body{
+    height:120px;
+
+    border-radius:
+        20px 20px 25px 25px;
+
+    background:
+        linear-gradient(
+            #ff69b4,
+            #8a2be2
+        );
+
+    box-shadow:
+        0 0 40px #ff149366;
+}
+
+.crema{
+    height:35px;
+    width:100%;
+
+    background:white;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:-18px;
+}
+
+/* VELA */
+.velas{
+    position:absolute;
+
+    top:-90px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.vela{
+    width:18px;
+    height:70px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            white 0 8px,
+            #00ffff 8px 16px
+        );
+
+    border-radius:5px;
+
+    position:relative;
+}
+
+.llama{
+    width:25px;
+    height:35px;
+
+    background:#ffd000;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:
+        rotate(-45deg);
+
+    position:absolute;
+
+    top:-35px;
+    left:-4px;
+
+    box-shadow:
+        0 0 25px #ffd000;
+
+    animation:
+        llama .4s infinite alternate;
+}
+
+@keyframes llama{
+    from{
+        transform:
+            rotate(-45deg)
+            scale(.8);
+    }
+
+    to{
+        transform:
+            rotate(-45deg)
+            scale(1.1);
+    }
+}
+
+/* FINAL */
+.final{
+    min-height:80vh;
+
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:50px;
+}
+
+.final h2{
+    font-size:
+        clamp(40px,8vw,85px);
+
+    line-height:1;
+}
+
+.final h2 span{
+    color:#ff69b4;
+
+    text-shadow:
+        0 0 30px #ff1493;
+}
+
+.final p{
+    margin-top:25px;
+
+    color:#aaa;
+
+    font-size:19px;
+}
+
+.final .emojis{
+    font-size:60px;
+    margin-top:40px;
+}
+
+/* CONFETI */
+.confeti{
+    position:fixed;
+
+    top:-20px;
+
+    width:10px;
+    height:15px;
+
+    z-index:100;
+
+    pointer-events:none;
+
+    animation:
+        caer linear forwards;
+}
+
+@keyframes caer{
+
+    to{
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .carta{
+        padding:30px 20px;
+    }
+
+    .carta p{
+        font-size:16px;
+    }
+
+    .hero{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+
+<!-- ======================
+     PORTADA
+====================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="small">
+✨ Una sorpresa especial ✨
+</div>
+
+<h1>
+FELIZ<br>
+CUMPLEAÑOS
+</h1>
+
+<div class="nombre">
+<span>MARLEN</span> 🎂
+</div>
+
+<p>
+Hoy el día es completamente tuyo. 💗
+</p>
+
+<button class="btn" onclick="abrirSorpresa()">
+🎁 ABRIR SORPRESA
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ======================
+     CARTA
+====================== -->
+
+<section class="seccion" id="carta">
+
+<div class="carta">
+
+<h2>
+💌 Para <span>Marlen</span>
+</h2>
+
+<p>
+
+Hoy es un día muy especial porque
+celebramos tu cumpleaños. 🎂✨
+
+<br><br>
+
+Quiero desearte un día lleno de
+risas, momentos bonitos y personas
+que te hagan sentir muy querida.
+
+<br><br>
+
+Espero que este nuevo año de tu vida
+esté lleno de nuevas aventuras,
+muchos sueños cumplidos y un montón
+de momentos que algún día podamos
+recordar y decir:
+
+<br><br>
+
+<strong>
+"JAJA, ¿te acuerdas de eso?" 😂
+</strong>
+
+<br><br>
+
+Gracias por ser una persona tan
+especial y por todos los momentos
+que hemos compartido.
+
+<br><br>
+
+Nunca cambies esa forma tan tuya
+de ser. ❤️
+
+<br><br>
+
+<strong>
+¡FELIZ CUMPLEAÑOS, MARLEN! 🎉🎂
+</strong>
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ======================
+     COSAS DE MARLEN
+====================== -->
+
+<section class="seccion">
+
+<div style="width:100%;max-width:1100px;text-align:center;">
+
+<h2 style="font-size:clamp(35px,6vw,55px);">
+¿Por qué Marlen es increíble? ✨
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="emoji">
+😂
+</div>
+
+<h3>
+Por las risas
+</h3>
+
+<p>
+Porque siempre hay alguna tontería
+que termina convirtiéndose en un
+momento inolvidable.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">
+💗
+</div>
+
+<h3>
+Por su forma de ser
+</h3>
+
+<p>
+Porque personas como tú hacen que
+los días normales se conviertan
+en recuerdos especiales.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">
+🔥
+</div>
+
+<h3>
+Por todo lo que viene
+</h3>
+
+<p>
+Este es solamente otro capítulo.
+Todavía quedan muchísimas historias
+por vivir.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================
+     PASTEL
+====================== -->
+
+<section class="seccion">
+
+<div style="text-align:center;">
+
+<h2 style="font-size:clamp(35px,6vw,55px);">
+🎂 Pide un deseo, Marlen
+</h2>
+
+
+<div class="pastel">
+
+<div class="velas">
+
+<div class="vela">
+
+<div class="llama"></div>
+
+</div>
+
+</div>
+
+
+<div class="crema"></div>
+
+<div class="pastel-body"></div>
+
+<div class="piso"></div>
+
+</div>
+
+
+<p style="font-size:20px;color:#aaa;">
+Cierra los ojos... ✨
+</p>
+
+
+<button class="btn" onclick="celebrar()">
+🎉 ¡CELEBRAR!
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ======================
+     FINAL
+====================== -->
+
+<section class="final">
+
+<h2>
+MARLEN,<br>
+QUE TU DÍA SEA<br>
+<span>INCREÍBLE</span> 💗
+</h2>
+
+<p>
+Que este nuevo año venga cargado
+de momentos increíbles.
+</p>
+
+<div class="emojis">
+🎂 🎈 🎁 ✨ 🥳 💗
+</div>
+
+</section>
+
+
+<footer>
+Hecho especialmente para Marlen ❤️
+</footer>
+
+
+<script>
+
+/* ==========================
+   PARTICULAS
+========================== */
+
+const canvas =
+document.getElementById("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+let particles=[];
+
+
+function resize(){
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener(
+"resize",
+resize
+);
+
+
+for(let i=0;i<130;i++){
+
+particles.push({
+
+x:Math.random()*innerWidth,
+
+y:Math.random()*innerHeight,
+
+r:Math.random()*2+1,
+
+speed:Math.random()*.5+.1
+
+});
+
+}
+
+
+function animar(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+ctx.fillStyle=
+"rgba(255,255,255,.7)";
+
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+p.y-=p.speed;
+
+
+if(p.y<0){
+
+p.y=canvas.height;
+
+}
+
+});
+
+
+requestAnimationFrame(animar);
+
+}
+
+animar();
+
+
+/* ==========================
+   BOTÓN SORPRESA
+========================== */
+
+function abrirSorpresa(){
+
+document
+.getElementById("carta")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+confeti();
+
+}
+
+
+/* ==========================
+   CELEBRAR
+========================== */
+
+function celebrar(){
+
+confeti();
+
+setTimeout(()=>{
+
+document
+.querySelector(".final")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+},1000);
+
+}
+
+
+/* ==========================
+   CONFETI
+========================== */
+
+function confeti(){
+
+const colores=[
+
+"#ff1493",
+"#00ffff",
+"#ffff00",
+"#8a2be2",
+"#ffffff",
+"#ff6600",
+"#00ff88"
+
+];
+
+
+for(let i=0;i<200;i++){
+
+let pieza=
+document.createElement("div");
+
+pieza.className=
+"confeti";
+
+
+pieza.style.left=
+Math.random()*100+"vw";
+
+
+pieza.style.background=
+colores[
+Math.floor(
+Math.random()*colores.length
+)
+];
+
+
+pieza.style.animationDuration=
+Math.random()*3+2+"s";
+
+
+pieza.style.width=
+Math.random()*8+6+"px";
+
+
+pieza.style.height=
+Math.random()*12+8+"px";
+
+
+document.body.appendChild(
+pieza
+);
+
+
+setTimeout(()=>{
+
+pieza.remove();
+
+},6000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
